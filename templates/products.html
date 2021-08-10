@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{%static 'font/css/all.min.css'%}">
+</head>
+<body><main>
+ <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="color: white"><i class="fas fa-home"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav" >
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" style="color: white">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://127.0.0.1:8000/shop/postcategories" style="color: white">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://127.0.0.1:8000/shop/postproduct" style="color: white">Products</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+ <div class="row">
+     <div class="col-md-3 col-12">
+          <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100" >
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4"><i class="fas fa-bars"></i> Menu</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto " style="height: 400px">
+      <li class="nav-item">
+        <a href="http://127.0.0.1:8000/shop/postcategories" class="nav-link text-white" aria-current="page">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+         <i class="fa fa-bookmark"></i> Categories
+        </a>
+      </li>
+      <li>
+        <a href="http://127.0.0.1:8000/shop/postproduct/" class="nav-link text-white active">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+        <i class="fa fa-tags" aria-hidden="true"></i>  Products
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+        <i class="fa fa-id-card" ></i>  Orders
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+         <i class="fas fa-user"></i>  Users
+        </a>
+      </li>
+      </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>Temurbek Ismoilov</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
+  </div>
+
+     </div>
+     <div class="col-md-9 col-12">
+         <!-- Button trigger modal -->
+<button type="button" class="btn btn-success mt-2 mb-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  +Add New Products
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Products</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Product_name</label>
+    <input type="text" name="product_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Price</label>
+    <input type="number" name="price" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword2" class="form-label">Category_id</label>
+    <input type="number" name="category_id" class="form-control" id="exampleInputPassword2">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword3" class="form-label">Image</label>
+    <input type="file" name="product_image" class="form-control" id="exampleInputPassword3">
+  </div>
+  <div class="d-flex justify-content-between">
+      <button type="submit" class="btn btn-primary">Send</button>
+   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+
+  </div>
+</form>
+      </div>
+
+    </div>
+  </div>
+</div>
+         <div class="dropdown">
+
+
+</div>
+         <table class="table table-hover table-striped w-100">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Product name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Category id</th>
+        <th>CRUD</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for i in prs%}
+   <tr>
+      <th scope="row">{{i.id}}</th>
+      <td>{{i.product_name}}</td>
+      <td>{{i.price}}</td>
+      <td>{{i.category_id}}</td>
+       <td><button class="btn btn-primary">Edit</button>
+           <button class="btn btn-danger">Delete</button></td>
+    </tr>
+   {% endfor %}
+
+  </tbody>
+
+</table>
+
+   <nav class="d-flex justify-content-center" aria-label="Page navigation example ">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+
+     </div>
+ </div>
+</main>
+
+
+<script type="text/javascript" src={% static "bootstrap/js/bootstrap.min.js" %}></script>
+   <script type="text/javascript" src={% static "js/main.js" %}></script>
+</body>
+</html>
